@@ -1,0 +1,31 @@
+/* ===== CSS VARIABLES (Figma Exact Colors) ===== */
+:root {
+  /* Base Colors */
+  --color-black: #000000;
+  --color-dark: #0a0a0a;
+  --color-white: #ffffff;
+  --color-white-soft: rgba(255, 255, 255, 0.95);
+  --color-white-muted: rgba(255, 255, 255, 0.7);
+  --color-white-faint: rgba(255, 255, 255, 0.3);
+
+  /* FIGMA GRADIENT COLORS (from screenshot) */
+  --gradient-coral: #FF624A;
+  --gradient-orange: #FF5500;
+  --gradient-orange-deep: #FF4000;
+  --gradient-fade: #C39894;
+
+  /* Accent Colors */
+  --color-red: #ff2222;
+  --color-red-deep: #cc0000;
+  --color-gold-light: #FFD966;
+  --color-gold: #FFB800;
+  --color-gold-dark: #B8860B;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Sizes */
+  --container-max: 1708px;
+  --nav-height: 120px;
+}

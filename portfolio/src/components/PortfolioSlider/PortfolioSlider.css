@@ -1,0 +1,184 @@
+/* ===== PORTFOLIO SLIDER (3D Tilted Marquee) ===== */
+.pslider {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Wrapper with 3D perspective */
+.pslider__wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  /* The whole block is tilted slightly */
+  transform: rotate(-6deg) scale(1.15);
+}
+
+/* ===== ROW ===== */
+.pslider__row {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+/* ===== TRACK (contains cards) ===== */
+.pslider__track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* RTL animation (Right to Left) */
+.pslider__row--rtl .pslider__track {
+  animation-name: marqueeRTL;
+  animation-duration: 45s;
+}
+
+/* LTR animation (Left to Right) */
+.pslider__row--ltr .pslider__track {
+  animation-name: marqueeLTR;
+  animation-duration: 45s;
+}
+
+/* ===== CARD ===== */
+.pslider__card {
+  position: relative;
+  flex-shrink: 0;
+  width: 420px;
+  height: 280px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1a1a1a;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease;
+}
+
+.pslider__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ===== KEYFRAMES ===== */
+
+/* Right to Left */
+@keyframes marqueeRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Left to Right */
+@keyframes marqueeLTR {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ===== BACKGROUND GLOW (bottom red) ===== */
+.pslider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120%;
+  background: radial-gradient(
+    ellipse at bottom center,
+    rgba(255, 98, 74, 0.55) 0%,
+    rgba(255, 85, 0, 0.25) 40%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content above glow */
+.pslider__wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .pslider {
+    padding: 80px 0;
+  }
+
+  .pslider__wrapper {
+    gap: 22px;
+    transform: rotate(-5deg) scale(1.1);
+  }
+
+  .pslider__card {
+    width: 340px;
+    height: 230px;
+  }
+
+  .pslider__track {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pslider {
+    padding: 60px 0;
+  }
+
+  .pslider__wrapper {
+    gap: 18px;
+    transform: rotate(-4deg) scale(1.08);
+  }
+
+  .pslider__card {
+    width: 260px;
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .pslider__track {
+    gap: 14px;
+  }
+
+  .pslider__row--rtl .pslider__track,
+  .pslider__row--ltr .pslider__track {
+    animation-duration: 35s;
+  }
+}
+
+@media (max-width: 480px) {
+  .pslider {
+    padding: 40px 0;
+  }
+
+  .pslider__wrapper {
+    gap: 12px;
+    transform: rotate(-3deg) scale(1.05);
+  }
+
+  .pslider__card {
+    width: 200px;
+    height: 140px;
+    border-radius: 8px;
+  }
+
+  .pslider__track {
+    gap: 10px;
+  }
+}

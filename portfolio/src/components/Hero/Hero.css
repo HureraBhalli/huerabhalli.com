@@ -1,0 +1,429 @@
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - var(--nav-height));
+  overflow: hidden;
+  background: #000000;
+}
+
+/* ===== BACKGROUND EFFECTS ===== */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Top-Left DARK RED GLOW (HH1 - DARK, SUBTLE, corner mein) */
+.hero__bg-glow-left {
+  position: absolute;
+  top: -150px;
+  left: 100px;
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(
+    circle at center,
+    rgba(170, 10, 30, 0.55) 0%,
+    rgba(130, 5, 20, 0.35) 20%,
+    rgba(80, 0, 12, 0.18) 40%,
+    rgba(30, 0, 5, 0.06) 60%,
+    transparent 75%
+  );
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+/* Right Side BRIGHT ORANGE-RED GLOW (HH1 - avatar ke peeche STRONG) */
+.hero__bg-glow-right {
+  position: absolute;
+  top: -40%;
+  right: -280px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 90, 60, 0.95) 0%,
+    rgba(255, 75, 0, 0.8) 20%,
+    rgba(255, 60, 0, 0.55) 40%,
+    rgba(200, 40, 0, 0.25) 60%,
+    transparent 78%
+  );
+  border-radius: 50%;
+  filter: blur(75px);
+}
+
+/* Bottom MAIN ORANGE GRADIENT (HH1 - sirf neeche concentrated) */
+.hero__bg-gradient-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 98, 74, 0) 0%,
+    rgba(255, 85, 0, 0.1) 15%,
+    rgba(255, 85, 0, 0.4) 40%,
+    rgba(255, 64, 0, 0.8) 70%,
+    #FF4000 100%
+  );
+}
+
+/* ===== CONTAINER ===== */
+.hero__container {
+  position: relative;
+  z-index: 10;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  min-height: calc(100vh - var(--nav-height));
+  padding-top: 80px;
+}
+
+/* ===== TAGLINE (Top Left) ===== */
+.hero__tagline {
+  grid-column: span 3;
+  padding-top: 90px;
+  padding-left: 40px;
+  z-index: 20;
+}
+
+.hero__tagline p {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.5;
+  font-family: var(--font-body);
+}
+
+/* ===== PERSON IMAGE (Center - thoda right shift) ===== */
+.hero__image-wrapper {
+  grid-column: span 6;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform: translateX(10px);
+}
+
+/* Person ke peeche halka red glow (HH1 - subtle) */
+.hero__image-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 10, 30, 0.35) 0%,
+    rgba(120, 0, 18, 0.15) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+}
+
+.hero__image {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 700px;      
+  height: auto;               
+  object-fit: contain;           
+  object-position: center bottom;
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+
+
+/* ===== STATS (Right) ===== */
+.hero__stats {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 110px;
+  z-index: 20;
+}
+
+.hero__avatars {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.hero__avatars img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 3px solid #000000;
+  object-fit: cover;
+  margin-left: -18px;
+}
+
+.hero__avatars img:first-child {
+  margin-left: 0;
+}
+
+.hero__stats-number {
+  color: #ffffff;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+  font-family: var(--font-body);
+}
+
+.hero__stats-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  margin-top: 8px;
+  font-family: var(--font-body);
+}
+
+/* ===== BOTTOM CONTENT ===== */
+.hero__content {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;          /* ← Navbar padding match */
+  right: 40px;         /* ← Navbar padding match */
+  z-index: 30;
+  /* padding hata do yahan se */
+}
+
+.hero__name {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+  line-height: 0.2;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 88px;
+  line-height: 0.65;
+  letter-spacing: -2px;
+}
+
+/* GOLD GRADIENT TEXT (HH1 exact) */
+.hero__title-gold {
+  font-size: 60px;
+  font-weight: 540;
+    font-family: 'Bodoni Moda', serif;
+    line-height: 0.5;
+  background: linear-gradient(
+    180deg,
+    #FFDC5C 0%,
+    #FFB800 50%,
+    #A06800 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__title-white {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 60px;
+  font-weight: 540;
+  color: #ffffff;
+}
+
+/* ===== BUTTONS ===== */
+.hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.hero__btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 26px 8px 8px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.hero__btn-icon {
+  width: 38px;
+  height: 38px;
+  background: #ff2222;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* Primary Button (White) */
+.hero__btn--primary {
+  background: #ffffff;
+  color: #000000;
+}
+
+.hero__btn--primary:hover {
+  transform: scale(1.05);
+  background: #f5f5f5;
+}
+
+/* Secondary Button (Outline) */
+.hero__btn--secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero__btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1400px) {
+  .hero__title {
+    font-size: 76px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero__title {
+    font-size: 64px;
+  }
+
+
+  .hero__tagline p {
+    font-size: 19px;
+  }
+
+  .hero__stats-number {
+    font-size: 44px;
+  }
+
+  .hero__image-wrapper {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+
+  .hero__tagline,
+  .hero__image-wrapper,
+  .hero__stats {
+    grid-column: span 1;
+  }
+
+  .hero__tagline {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .hero__stats {
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .hero__content {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;          
+  right: 40px;
+  z-index: 30;
+}
+
+  .hero__title {
+    font-size: 56px;
+  }
+
+  .hero__image {
+    height: 520px;
+  }
+
+  .hero__buttons {
+    justify-content: center;
+  }
+
+  .hero__bg-gradient-bottom {
+    height: 35%;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__container,
+  .hero__content {
+    padding: 0 20px;
+  }
+
+  .hero__title {
+    font-size: 34px;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .hero__name {
+    font-size: 20px;
+  }
+
+  .hero__tagline p {
+    font-size: 16px;
+  }
+
+  .hero__stats-number {
+    font-size: 34px;
+  }
+
+  .hero__stats-label {
+    font-size: 13px;
+  }
+
+  .hero__image {
+    height: 380px;
+  }
+
+  .hero__avatars img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero__btn {
+    font-size: 13px;
+    padding: 6px 18px 6px 6px;
+  }
+
+  .hero__btn-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero__bg-glow-left,
+  .hero__bg-glow-right {
+    width: 400px;
+    height: 400px;
+  }
+}

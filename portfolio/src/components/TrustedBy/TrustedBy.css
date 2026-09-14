@@ -1,0 +1,130 @@
+/* ===== TRUSTED BY SECTION ===== */
+.trusted {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  padding: 60px 0 80px;
+}
+
+/* ===== HEADING ("Trusted By" with lines) ===== */
+.trusted__heading {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  padding: 0 40px;
+}
+
+.trusted__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+}
+
+.trusted__title {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ===== LOGOS ROW (Left/Right Padding ZERO) ===== */
+.trusted__logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;              /* ← Left/right padding ZERO */
+  flex-wrap: nowrap;       /* ← Ek line mein sab */
+}
+
+.trusted__logo {
+  flex: 0 1 auto;          /* ← Auto width, shrink allowed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 70px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.trusted__logo img {
+  max-width: 140px;
+  max-height: 60px;
+  width: 90px;
+  height: 48px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.trusted__logo:hover {
+  transform: scale(1.05);
+}
+
+.trusted__logo:hover img {
+  opacity: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .trusted__logos {
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;       /* ← Chhoti screen pe wrap allowed */
+  }
+
+  .trusted__logo {
+    flex: 0 0 auto;
+    min-width: 100px;
+    height: 60px;
+  }
+
+  .trusted__logo img {
+    max-width: 120px;
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 640px) {
+  .trusted {
+    padding: 40px 0 60px;
+  }
+
+  .trusted__heading {
+    padding: 0 20px;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .trusted__title {
+    font-size: 18px;
+  }
+
+  .trusted__logos {
+    gap: 24px;
+    padding: 0;            /* ← Mobile pe bhi zero */
+    flex-wrap: wrap;
+  }
+
+  .trusted__logo {
+    min-width: 80px;
+    height: 50px;
+  }
+
+  .trusted__logo img {
+    max-width: 90px;
+    max-height: 40px;
+  }
+}

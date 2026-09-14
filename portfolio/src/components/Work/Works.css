@@ -1,0 +1,428 @@
+/* ===== WORKS SECTION ===== */
+.works {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  padding: 100px 0 80px;
+}
+
+/* ===== HEADING ===== */
+.works__heading {
+  max-width: 900px;
+  margin: 0 auto 70px;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.works__title {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+
+.works__subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== PROJECTS GRID ===== */
+.works__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ===== CARD (No hover, no zoom) ===== */
+.works__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+/* ===== Card Image ===== */
+.works__card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.works__card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ===== Card Overlay (top bar) ===== */
+.works__card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+}
+
+.works__card-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.works__card-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.works__card-brand-name {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1;
+}
+
+.works__card-brand-role {
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.works__card-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.works__card-tag {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #ff6b35;
+  padding: 5px 12px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.works__card-tag:nth-child(2) {
+  background: #34a853;
+}
+
+/* ===== Card Footer (View Project) ===== */
+.works__card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 60%,
+    transparent 100%
+  );
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  pointer-events: none;
+}
+
+.works__card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(30, 30, 30, 0.9);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  pointer-events: auto;
+  transform: none;
+  transition: none;
+}
+
+.works__card-btn:hover {
+  background: rgba(30, 30, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: none;
+}
+
+.works__card-btn svg {
+  transform: none;
+  transition: none;
+}
+
+.works__card-btn:hover svg {
+  transform: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .works__title {
+    font-size: 42px;
+  }
+
+  .works__grid {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .works {
+    padding: 80px 0 60px;
+  }
+
+  .works__heading {
+    margin-bottom: 50px;
+    padding: 0 24px;
+  }
+
+  .works__title {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+
+  .works__subtitle {
+    font-size: 14px;
+  }
+
+  .works__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 24px;
+  }
+
+  .works__card-overlay {
+    padding: 16px 18px;
+  }
+
+  .works__card-brand-name {
+    font-size: 14px;
+  }
+
+  .works__card-tag {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .works__title {
+    font-size: 28px;
+  }
+
+  .works__card-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}
+/* ============================================================
+   ===== NAYA: VIEW MORE PROJECTS + STATS SECTION ADD =====
+   ============================================================ */
+
+/* ===== View More Projects Button ===== */
+.works__more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  padding: 0 40px;
+}
+
+.works__more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 24px 8px 8px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.works__more-btn:hover {
+  background: #f5f5f5;
+}
+
+.works__more-icon {
+  width: 34px;
+  height: 34px;
+  background: #ff2222;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* ===== Stats Section ===== */
+.works__stats {
+  margin-top: 120px;
+  padding: 0 40px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tagline above stats */
+.works__stats-tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* Stats Grid */
+.works__stats-grid {
+  display: grid;
+  display: flex;
+  justify-content: space-around;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.works__stats-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+ padding: 20px 40px; 
+}
+
+.works__stats-number {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.works__stats-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Vertical Divider between stats */
+.works__stats-divider {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 180px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+}
+
+/* ===== Stats Responsive ===== */
+@media (max-width: 1024px) {
+  .works__stats-number {
+    font-size: 46px;
+  }
+
+  .works__stats-item {
+    padding: 20px 24px;
+  }
+
+  .works__stats-label {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .works__more {
+    margin-top: 40px;
+  }
+
+  .works__stats {
+    margin-top: 80px;
+  }
+
+  .works__stats-tagline {
+    margin-bottom: 50px;
+    font-size: 14px;
+  }
+
+  .works__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 20px;
+  }
+
+  .works__stats-item {
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .works__stats-divider {
+    display: none;
+  }
+
+  .works__stats-number {
+    font-size: 38px;
+    margin-bottom: 10px;
+  }
+
+  .works__stats-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .works__more-btn {
+    font-size: 13px;
+    padding: 6px 18px 6px 6px;
+  }
+
+  .works__more-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .works__stats-number {
+    font-size: 32px;
+  }
+}
