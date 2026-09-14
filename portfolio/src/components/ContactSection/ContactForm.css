@@ -1,0 +1,252 @@
+/* ===== CONTACT SECTION ===== */
+.contact {
+  position: relative;
+  width: 100%;
+  background: #0a0000;
+  padding: 80px 0 100px;
+  overflow: hidden;
+}
+
+/* Background red glow */
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    rgba(180, 15, 0, 0.5) 0%,
+    rgba(80, 5, 0, 0.25) 40%,
+    transparent 75%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== CONTAINER ===== */
+.contact__container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* ===== LEFT SIDE ===== */
+.contact__left {
+  padding-top: 10px;
+}
+
+.contact__heading {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.contact__info-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact__info-link:hover {
+  color: #ff4000;
+}
+
+.contact__info-icon {
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* Socials Row */
+.contact__socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.contact__social {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact__social:hover {
+  background: #ff2222;
+  border-color: #ff2222;
+  color: #ffffff;
+}
+
+/* ===== RIGHT SIDE — FORM ===== */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact__label {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.contact__input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.contact__input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.contact__input:focus {
+  border-color: rgba(255, 64, 0, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact__textarea {
+  resize: vertical;
+  min-height: 90px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Select */
+.contact__select-wrapper {
+  position: relative;
+}
+
+.contact__select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+.contact__select-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+/* Submit Button */
+.contact__submit {
+  width: 100%;
+  padding: 14px 24px;
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 6px;
+}
+
+.contact__submit:hover {
+  background: #f5f5f5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .contact__container {
+    gap: 40px;
+  }
+
+  .contact__info-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 60px 0 80px;
+  }
+
+  .contact__container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 24px;
+  }
+
+  .contact__heading {
+    font-size: 14px;
+  }
+
+  .contact__info-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact__container {
+    padding: 0 20px;
+  }
+
+  .contact__social {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+
+  .contact__input {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .contact__submit {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}
