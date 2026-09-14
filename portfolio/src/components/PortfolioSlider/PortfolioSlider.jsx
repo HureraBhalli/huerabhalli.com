@@ -1,29 +1,48 @@
+import { useState, useEffect } from 'react';
 import './PortfolioSlider.css';
 
+// Static arrays component ke bahar declare kar diye
+const row1 = [
+  '/images/slider1.png',
+  '/images/work1.png',
+  '/images/work3.png',
+  '/images/slider2.png',
+];
+
+const row2 = [
+  '/images/slider3.png',
+  '/images/slider4.png',
+  '/images/slider5.png',
+  '/images/slider6.png',
+];
+
+const row3 = [
+  '/images/slider1.png',
+  '/images/work1.png',
+  '/images/work3.png',
+  '/images/slider2.png',
+];
+
+const allImages = [...new Set([...row1, ...row2, ...row3])];
+
 const PortfolioSlider = () => {
-  // Row 1 — moves right to left
-  const row1 = [
-    '/images/slider1.png',
-    '/images/work1.png',
-    '/images/work3.png',
-    '/images/slider2.png'
-  ];
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Row 2 — moves left to right
-  const row2 = [
-    '/images/slider3.png',
-    '/images/slider4.png',
-    '/images/slider5.png',
-    '/images/slider6.png'
-  ];
+  // Preload all images
+  useEffect(() => {
+    const preloadImages = allImages.map((src) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+      });
+    });
 
-  // Row 3 — moves right to left
-  const row3 = [
-    '/images/slider1.png',
-    '/images/work1.png',
-    '/images/work3.png',
-    '/images/slider2.png'
-  ];
+    Promise.all(preloadImages).then(() => {
+      setIsLoaded(true);
+    });
+  }, []);
 
   // Duplicate arrays for seamless loop
   const row1Loop = [...row1, ...row1];
@@ -32,14 +51,23 @@ const PortfolioSlider = () => {
 
   return (
     <section className="pslider">
-      <div className="pslider__wrapper">
+      {/* ===== Loader ===== */}
+      {!isLoaded && (
+        <div className="pslider__loader">
+          <div className="pslider__spinner"></div>
+          <p className="pslider__loader-text">Loading Portfolio...</p>
+        </div>
+      )}
 
+      {/* ===== Slider ===== */}
+      <div className={`pslider__wrapper ${isLoaded ? 'pslider__wrapper--visible' : ''}`}>
+        
         {/* Row 1 — Right to Left */}
         <div className="pslider__row pslider__row--rtl">
           <div className="pslider__track">
             {row1Loop.map((src, i) => (
               <div className="pslider__card" key={i}>
-                <img src={src} alt="" />
+                <img src={src} alt="" loading="lazy" />
               </div>
             ))}
           </div>
@@ -50,7 +78,7 @@ const PortfolioSlider = () => {
           <div className="pslider__track">
             {row2Loop.map((src, i) => (
               <div className="pslider__card" key={i}>
-                <img src={src} alt="" />
+                <img src={src} alt="" loading="lazy" />
               </div>
             ))}
           </div>
@@ -61,7 +89,7 @@ const PortfolioSlider = () => {
           <div className="pslider__track">
             {row3Loop.map((src, i) => (
               <div className="pslider__card" key={i}>
-                <img src={src} alt="" />
+                <img src={src} alt="" loading="lazy" />
               </div>
             ))}
           </div>
