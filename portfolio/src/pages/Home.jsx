@@ -10,18 +10,31 @@ import ContactForm from '../components/ContactSection/ContactForm';
 import Footer from '../components/Footer/Footer';
 
 const Home = () => {
+  // Universal smooth scroll function
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const navHeight = 100; // Navbar height
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <>
-      <Navbar />
-      <Hero />
+      <Navbar onNavClick={scrollToSection} />
+      <Hero onHeroClick={scrollToSection} />
       <TrustedBy />
-      <Works />
-      <Services />
+      <Works onWorksClick={scrollToSection} />
+      <Services onServiceClick={scrollToSection} />
       <PortfolioSlider />
-       <About />
-       <TestimonialsFAQ />
+      <About />
+      <TestimonialsFAQ />
       <ContactForm />
-       <Footer />
+      <Footer onFooterClick={scrollToSection} />
     </>
   );
 };

@@ -37,6 +37,29 @@
   pointer-events: none;
 }
 
+/* ===== BACKGROUND GRID LINES (Figma jaisa) ===== */
+.tf::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Vertical lines */
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    /* Horizontal lines */
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    );
+  background-size: 12.5% 25%;
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* ===== SHARED HEADING ===== */
 .tf__title {
   position: relative;
@@ -94,14 +117,14 @@
   }
 }
 
-/* ===== TESTIMONIAL CARD ===== */
+/* ===== TESTIMONIAL CARD (Figma Size) ===== */
 .tf__card {
   flex-shrink: 0;
-  width: 340px;
-  min-height: 220px;
-  padding: 28px 26px;
-  background: rgba(60, 10, 5, 0.55);
-  border: 1px solid rgba(255, 80, 60, 0.15);
+  width: 320px;
+  min-height: 260px;
+  padding: 26px 24px;
+  background: rgba(60, 10, 5, 0.5);
+  border: 1px solid rgba(255, 80, 60, 0.18);
   border-radius: 12px;
   backdrop-filter: blur(20px);
   display: flex;
@@ -236,7 +259,7 @@
   }
 
   .tf__card {
-    width: 300px;
+    width: 290px;
     padding: 24px 22px;
   }
 }
@@ -256,8 +279,8 @@
   }
 
   .tf__card {
-    width: 280px;
-    min-height: 200px;
+    width: 270px;
+    min-height: 240px;
     padding: 22px 20px;
   }
 
@@ -284,7 +307,8 @@
 
 @media (max-width: 480px) {
   .tf__card {
-    width: 260px;
+    width: 250px;
+    min-height: 220px;
     padding: 20px 18px;
   }
 

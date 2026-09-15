@@ -52,7 +52,9 @@
   background: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
+  /* Koi transition ya transform nahi */
 }
+
 /* ===== Card Image ===== */
 .works__card-image {
   position: relative;
@@ -67,6 +69,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  /* Koi transition ya transform nahi */
 }
 
 /* ===== Card Overlay (top bar) ===== */
@@ -162,23 +165,131 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   pointer-events: auto;
-  transform: none;
-  transition: none;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .works__card-btn:hover {
-  background: rgba(30, 30, 30, 0.9);
-  border-color: rgba(255, 255, 255, 0.1);
-  transform: none;
+  background: rgba(50, 50, 50, 0.95);
+  transform: scale(1.06);
 }
 
 .works__card-btn svg {
-  transform: none;
-  transition: none;
+  transition: transform 0.3s ease;
 }
 
 .works__card-btn:hover svg {
-  transform: none;
+  transform: translate(2px, -2px);
+}
+
+/* ===== View More Projects Button ===== */
+.works__more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  padding: 0 40px;
+}
+
+.works__more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 24px 8px 8px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.works__more-btn:hover {
+  background: #f5f5f5;
+  transform: scale(1.05);
+}
+
+.works__more-icon {
+  width: 34px;
+  height: 34px;
+  background: #ff2222;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* ===== Stats Section ===== */
+.works__stats {
+  margin-top: 120px;
+  padding: 0 40px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tagline above stats */
+.works__stats-tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* Stats Grid */
+.works__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.works__stats-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 40px;
+}
+
+.works__stats-number {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.works__stats-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Vertical Divider between stats */
+.works__stats-divider {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 180px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
 }
 
 /* ===== RESPONSIVE ===== */
@@ -189,6 +300,18 @@
 
   .works__grid {
     gap: 24px;
+  }
+
+  .works__stats-number {
+    font-size: 46px;
+  }
+
+  .works__stats-item {
+    padding: 20px 24px;
+  }
+
+  .works__stats-label {
+    font-size: 14px;
   }
 }
 
@@ -229,150 +352,7 @@
     font-size: 10px;
     padding: 4px 10px;
   }
-}
 
-@media (max-width: 480px) {
-  .works__title {
-    font-size: 28px;
-  }
-
-  .works__card-btn {
-    font-size: 12px;
-    padding: 8px 14px;
-  }
-}
-/* ============================================================
-   ===== NAYA: VIEW MORE PROJECTS + STATS SECTION ADD =====
-   ============================================================ */
-
-/* ===== View More Projects Button ===== */
-.works__more {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-  padding: 0 40px;
-}
-
-.works__more-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #ffffff;
-  color: #000000;
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 8px 24px 8px 8px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.works__more-btn:hover {
-  background: #f5f5f5;
-}
-
-.works__more-icon {
-  width: 34px;
-  height: 34px;
-  background: #ff2222;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  flex-shrink: 0;
-}
-
-/* ===== Stats Section ===== */
-.works__stats {
-  margin-top: 120px;
-  padding: 0 40px;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Tagline above stats */
-.works__stats-tagline {
-  color: rgba(255, 255, 255, 0.7);
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: center;
-  margin-bottom: 70px;
-}
-
-/* Stats Grid */
-.works__stats-grid {
-  display: grid;
-  display: flex;
-  justify-content: space-around;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-}
-
-.works__stats-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
- padding: 20px 40px; 
-}
-
-.works__stats-number {
-  color: #ffffff;
-  font-family: "Inter", sans-serif;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
-}
-
-.works__stats-label {
-  color: rgba(255, 255, 255, 0.65);
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-/* Vertical Divider between stats */
-.works__stats-divider {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 180px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(255, 255, 255, 0.15) 50%,
-    transparent 100%
-  );
-}
-
-/* ===== Stats Responsive ===== */
-@media (max-width: 1024px) {
-  .works__stats-number {
-    font-size: 46px;
-  }
-
-  .works__stats-item {
-    padding: 20px 24px;
-  }
-
-  .works__stats-label {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
   .works__more {
     margin-top: 40px;
   }
@@ -412,6 +392,15 @@
 }
 
 @media (max-width: 480px) {
+  .works__title {
+    font-size: 28px;
+  }
+
+  .works__card-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
   .works__more-btn {
     font-size: 13px;
     padding: 6px 18px 6px 6px;

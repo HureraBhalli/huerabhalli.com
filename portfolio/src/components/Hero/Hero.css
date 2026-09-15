@@ -168,7 +168,7 @@
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  border: 3px solid #000000;
+  border: 3px;
   object-fit: cover;
   margin-left: -18px;
 }

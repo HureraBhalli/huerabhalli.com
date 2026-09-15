@@ -11,7 +11,7 @@ const About = () => {
   ];
 
   return (
-    <section className="about">
+    <section className="about" id="about">
 
       {/* ===== Background Big Text ===== */}
       <div className="about__bigname" aria-hidden="true">
@@ -22,7 +22,7 @@ const About = () => {
       {/* ===== Content Wrapper ===== */}
       <div className="about__container">
 
-        {/* ===== Left Side — Text + Tags + Experience ===== */}
+        {/* ===== Left Side ===== */}
         <div className="about__left">
 
           {/* Bio Text */}
@@ -41,32 +41,46 @@ const About = () => {
           {/* Tags */}
           <div className="about__tags">
             {tags.map((tag) => (
-              <span className="about__tag" key={tag}>{tag}</span>
+              <span className="about__tag" key={tag}>
+                {tag}
+              </span>
             ))}
           </div>
 
           {/* Experience Bar */}
           <div className="about__experience">
+
             <div className="about__experience-item">
-              <span className="about__experience-label">UI UX Designer</span>
+              <span className="about__experience-label">
+                UI UX Designer
+              </span>
             </div>
+
             <div className="about__experience-item">
-              <span className="about__experience-label">Flutter Developer</span>
+              <span className="about__experience-label">
+                Flutter Developer
+              </span>
             </div>
+
             <div className="about__experience-item">
-              <span className="about__experience-label">2021-Present</span>
+              <span className="about__experience-label">
+                2021-Present
+              </span>
             </div>
+
           </div>
 
         </div>
 
         {/* ===== Right Side — Person Image ===== */}
         <div className="about__right">
+
           <img
             src="/images/about-person.png"
             alt="Hurera Bhalli"
             className="about__image"
           />
+
         </div>
 
       </div>

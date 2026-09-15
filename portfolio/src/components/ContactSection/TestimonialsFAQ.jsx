@@ -3,7 +3,7 @@ import { Minus, Plus } from 'lucide-react';
 import './TestimonialsFAQ.css';
 
 const TestimonialsFAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+const [openIndex, setOpenIndex] = useState(0);
 
   const reviews = [
     {
@@ -70,7 +70,7 @@ const TestimonialsFAQ = () => {
   };
 
   return (
-    <section className="tf">
+    <section className="tf" id="testimonials">
 
       {/* ===== TESTIMONIALS ===== */}
       <h2 className="tf__title">What Clients Say</h2>

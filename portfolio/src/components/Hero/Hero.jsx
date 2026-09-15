@@ -1,9 +1,13 @@
 import { ArrowUpRight } from 'lucide-react';
 import './Hero.css';
 
-const Hero = () => {
+const Hero = ({ onHeroClick }) => {
+  const handleClick = (id) => {
+    if (onHeroClick) onHeroClick(id);
+  };
+
   return (
-    <section className="hero">
+    <section className="hero" id="home">
 
       {/* ===== Background Effects ===== */}
       <div className="hero__bg">
@@ -57,14 +61,20 @@ const Hero = () => {
 
             {/* Buttons */}
             <div className="hero__buttons">
-              <button className="hero__btn hero__btn--primary">
+              <button
+                className="hero__btn hero__btn--primary"
+                onClick={() => handleClick('contact')}
+              >
                 <span className="hero__btn-icon">
                   <ArrowUpRight size={18} />
                 </span>
                 Plan a free strategy call
               </button>
 
-              <button className="hero__btn hero__btn--secondary">
+              <button
+                className="hero__btn hero__btn--secondary"
+                onClick={() => handleClick('works')}
+              >
                 <span className="hero__btn-icon">
                   <ArrowUpRight size={18} />
                 </span>
