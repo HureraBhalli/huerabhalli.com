@@ -1,0 +1,36 @@
+# DEPENDENCIES
+node_modules/
+*/node_modules/
+**/node_modules/
+node_modules_temp/
+*/node_modules_temp/
+**/node_modules_temp/
+
+# ENVIRONMENT
+.env
+.env.local
+.env.*.local
+*/.env
+*/.env.local
+
+# BUILD OUTPUT
+dist/
+build/
+*/dist/
+*/build/
+
+# LOGS
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VERCEL
+.vercel/
+*/.vercel/
