@@ -1,13 +1,13 @@
-import { ArrowUpRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowUpRight, Loader2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { publicApi, getImageUrl } from '../../api/publicApi';
 import './Works.css';
 
-const Works = ({ onWorksClick }) => {
-  const projects = [
-    { id: 1, title: 'Take Control Of Your Finances', image: '/images/work1.png' },
-    { id: 2, title: 'Financial Dashboard', image: '/images/work2.png' },
-    { id: 3, title: 'Mobile App Design', image: '/images/work3.png' },
-    { id: 4, title: 'Financial Mobile App', image: '/images/work4.png' },
-  ];
+const Works = () => {
+  const navigate = useNavigate();
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const stats = [
     { id: 1, number: '140+', label: 'Websites Done' },
@@ -16,15 +16,51 @@ const Works = ({ onWorksClick }) => {
     { id: 4, number: '6+',   label: 'Design Awards' },
   ];
 
-  const handleViewProject = () => {
-    window.open('https://dribbble.com', '_blank');
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchProjects = async () => {
+      try {
+        // Saari 5 categories se projects fetch karo
+        const [gigs, thumbnails, banners, appProjects, uiuxProjects] = await Promise.all([
+          publicApi.getGigs().catch(() => ({ data: [] })),
+          publicApi.getThumbnails().catch(() => ({ data: [] })),
+          publicApi.getBanners().catch(() => ({ data: [] })),
+          publicApi.getAppProjects().catch(() => ({ data: [] })),
+          publicApi.getUiUxProjects().catch(() => ({ data: [] })),
+        ]);
+
+        if (cancelled) return;
+
+        // Saare projects ko combine karo
+        const allProjects = [
+          ...(gigs.data || []).map((p) => ({ ...p, type: 'gig' })),
+          ...(thumbnails.data || []).map((p) => ({ ...p, type: 'thumbnail' })),
+          ...(banners.data || []).map((p) => ({ ...p, type: 'banner' })),
+          ...(appProjects.data || []).map((p) => ({ ...p, type: 'app' })),
+          ...(uiuxProjects.data || []).map((p) => ({ ...p, type: 'uiux' })),
+        ];
+
+        // Latest 4 lo (createdAt ke hisaab se)
+        allProjects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        const top4 = allProjects.slice(0, 4);
+
+        setProjects(top4);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+
+    fetchProjects();
+    return () => { cancelled = true; };
+  }, []);
+
+  const handleViewProject = (project) => {
+    navigate(`/project/${project._id}?type=${project.type}`);
   };
 
   const handleViewMore = () => {
-    // Scroll to contact (ya koi bhi section)
-    if (onWorksClick) onWorksClick('contact');
-    // Ya external URL:
-    // window.open('https://dribbble.com', '_blank');
+    navigate('/projects');
   };
 
   return (
@@ -44,30 +80,39 @@ const Works = ({ onWorksClick }) => {
       </div>
 
       {/* ===== Projects Grid ===== */}
-      <div className="works__grid">
-        {projects.map((project) => (
-          <div className="works__card" key={project.id}>
-            <div className="works__card-image">
-              <img src={project.image} alt={project.title} />
+      {loading ? (
+        <div className="works__loading">
+          <Loader2 size={40} className="works__spinner" />
+          <p>Loading projects...</p>
+        </div>
+      ) : projects.length === 0 ? (
+        <div className="works__empty">
+          <p>No projects yet. Add some from the admin panel.</p>
+        </div>
+      ) : (
+        <div className="works__grid">
+          {projects.map((project) => (
+            <div className="works__card" key={project._id}>
+              <div className="works__card-image">
+                <img
+                  src={getImageUrl(project.image || project.thumbnail)}
+                  alt={project.title || 'Project'}
+                />
+              </div>
 
-              {project.id === 1 && (
-                <div className="works__card-overlay">
-                  <div className="works__card-topbar">
-                    <div className="works__card-brand"></div>
-                  </div>
-                </div>
-              )}
+              <div className="works__card-footer">
+                <button
+                  className="works__card-btn"
+                  onClick={() => handleViewProject(project)}
+                >
+                  View Project
+                  <ArrowUpRight size={14} />
+                </button>
+              </div>
             </div>
-
-            <div className="works__card-footer">
-              <button className="works__card-btn" onClick={handleViewProject}>
-                View Project
-                <ArrowUpRight size={14} />
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* ===== View More Projects Button ===== */}
       <div className="works__more">

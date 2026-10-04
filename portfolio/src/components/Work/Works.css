@@ -415,3 +415,23 @@
     font-size: 32px;
   }
 }
+.works__loading,
+.works__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+.works__spinner {
+  animation: worksSpin 0.8s linear infinite;
+  color: #ff5500;
+}
+
+@keyframes worksSpin {
+  to { transform: rotate(360deg); }
+}
