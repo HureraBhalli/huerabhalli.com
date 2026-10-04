@@ -1,0 +1,24 @@
+.ap__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ap__logout-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 34, 34, 0.1);
+  border: 1px solid rgba(255, 34, 34, 0.2);
+  border-radius: 12px;
+  color: #ff5555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ap__logout-btn:hover {
+  background: rgba(255, 34, 34, 0.2);
+  border-color: rgba(255, 34, 34, 0.4);
+}
